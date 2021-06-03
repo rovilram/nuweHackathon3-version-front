@@ -1,0 +1,9 @@
+.app__header {
+  height:15vh;
+}
+.app__header .Button__button {
+    margin:0 5px;
+  width: 20%;
+  height: 25px;
+  border-radius: 15px
+}

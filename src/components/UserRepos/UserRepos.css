@@ -1,0 +1,16 @@
+.UserRepos__repos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.UserRepos__repos-wrapper .Button__button,
+.UserRepos__wrapper .Button__button {
+  border-radius: 15px;
+  height: 25px;
+  margin: 0 5px;
+  width: 100px;
+}
+
+.Repo__lang-label , .Repo__id-label {
+  font-weight: bold;
+}

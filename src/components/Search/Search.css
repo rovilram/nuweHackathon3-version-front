@@ -1,0 +1,65 @@
+.Search__wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  justify-content: flex-start;
+}
+
+.Search__buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.Search__wrapper .Input__Wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.Search__wrapper .Input__Wrapper > input{
+
+  text-align: center;
+  width: 100%;
+}
+
+
+.Search__wrapper .Search__form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 15rem;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.Search__wrapper .Search__buttons-wrapper > div,
+.Search__buttons-wrapper > button,
+.Search__buttons-wrapper > div > input,
+.Card__wrapper .Button__button {
+  margin: 0 5px;
+  width: 25vw;
+  height: 25px;
+  border-radius: 15px;
+}
+
+.Search__wrapper .Search__form-wrapper > div > label {
+  min-width: 0;
+  margin: 0;
+}
+
+.Search__wrapper .Card__wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  width: 100%;
+}
+
+.Search__wrapper .Card__wrapper p {
+  margin: 5px 0;
+}
+.Search__wrapper .Card__img-wrapper > img {
+  width: 25vw;
+}

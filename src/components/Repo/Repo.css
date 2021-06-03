@@ -1,0 +1,11 @@
+.Repo__wrapper {
+  border: grey solid 1px;
+  margin: 5px;
+  padding: 5px;
+  width: 175px;
+  flex-grow: 1;
+}
+
+.Repo__wrapper h3 {
+  overflow-wrap: break-word;
+}

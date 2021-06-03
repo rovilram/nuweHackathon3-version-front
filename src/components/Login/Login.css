@@ -1,0 +1,61 @@
+.Login__wrapper {
+  align-items: center;
+  display: flex;
+  height: 75vh;
+  justify-content: center;
+}
+
+.Login__wrapper .Login__form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: space-around;
+  width: 75%;
+}
+
+.Login__wrapper .Input__Wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.Login__wrapper .Input__Wrapper > input {
+  margin: 0 5px;
+  width: 55%;
+}
+.Login__wrapper .Input__Wrapper > label {
+  margin: 0 5px;
+  min-width: 15%;
+  text-align: start;
+}
+
+.Login__wrapper .Error__Wrapper {
+  height: 20px;
+  color: red;
+}
+
+.Login__wrapper .Login__Button-wrapper {
+  display: flex;
+  text-align: center;
+  height: 15vh;
+}
+
+.Login__Input-wrapper {
+  width:100%
+}
+
+
+.Login__wrapper .Login__Button-wrapper > div,
+.Login__Button-wrapper > button,
+.Input__Wrapper > input#submit {
+  margin: 0 5px;
+  width: 100%;
+  height: 25px;
+  border-radius: 15px;
+}
+
+.Login__wrapper .Login__Button-wrapper > div > label {
+  display: none;
+}
