@@ -3,19 +3,21 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Error from '../Error/Error';
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import LoggedContext from '../../context/loggedContext';
 import { useHistory } from 'react-router-dom';
+import useFetch from '../../Hooks/useFetch';
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setusername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { setLogged } = useContext(LoggedContext);
   const history = useHistory();
+  const [loginFetchStatus, loginFetch] = useFetch();
 
-  const changeEmail = (mail) => {
-    setEmail(mail);
+  const changeUsername = (mail) => {
+    setusername(mail);
     setError('');
   };
 
@@ -25,25 +27,44 @@ export const Login = () => {
   };
 
   const clickCancel = () => {
-    setEmail('');
+    setusername('');
     setPassword('');
     setError('');
   };
 
   const clickSend = (e) => {
-    //e.preventDefault();
-    if (email === 'admin@admin.es' && password === 'admin') {
+    e.preventDefault();
+    const url = `http://localhost:3000/login`;
+    const method = 'POST';
+    const body = {
+      username,
+      password,
+    };
+    loginFetch({ url, method, body });
+  };
+
+  useEffect(() => {
+    const loggin = () => {
+      console.log("logeado!")
       setLogged(true);
       history.push('/search');
-    } else setError('email y contraseña no válidos.');
-  };
+    };
+    loginFetchStatus.isSuccess && loggin();
+
+    loginFetchStatus.isFailed && setError(loginFetchStatus.error.message);
+  }, [history, loginFetchStatus.isSuccess, loginFetchStatus.isFailed, setLogged, loginFetchStatus.error]);
 
   return (
     <div className="Login__wrapper">
-      <form className="Login__form" onClick={clickSend}>
+      <form className="Login__form" onSubmit={clickSend}>
         <div className="Login__Input-wrapper">
-          <Input name="email" inputType="email" change={changeEmail} id="email">
-            {email}
+          <Input
+            name="usuario"
+            inputType="text"
+            change={changeUsername}
+            id="email"
+          >
+            {username}
           </Input>
           <Input
             name="contraseña"
