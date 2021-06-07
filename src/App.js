@@ -1,5 +1,6 @@
 import Header from './components/Header/Header';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 import Search from './components/Search/Search';
 import Footer from './components/Footer/Footer';
 import UserRepos from './components/UserRepos/UserRepos';
@@ -18,13 +19,14 @@ function App() {
 
   return (
     <div className="App">
-        <LoggedProvider value={{ logged, setLogged }}>
-          <Header />
-      <main>
+      <LoggedProvider value={{ logged, setLogged }}>
+        <Header />
+        <main>
           <UserDataProvider value={{ userData, setUserData }}>
             <Router>
               <Switch>
                 <Route exact path="/" component={Login} />
+                <Route exact path="/register" component={Register} />
                 <Route exact path="/search" component={Search} />
                 <Route
                   exact
@@ -34,8 +36,8 @@ function App() {
               </Switch>
             </Router>
           </UserDataProvider>
-      </main>
-        </LoggedProvider>
+        </main>
+      </LoggedProvider>
 
       <Footer />
     </div>

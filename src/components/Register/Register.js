@@ -1,81 +1,76 @@
-import './Login.css';
+import './Register.css';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Error from '../Error/Error';
 
 import React, { useState, useContext, useEffect } from 'react';
-import LoggedContext from '../../context/loggedContext';
+// import LoggedContext from '../../context/loggedContext';
 import { useHistory } from 'react-router-dom';
 import useFetch from '../../Hooks/useFetch';
-import axios from 'axios';
 
-export const Login = () => {
-  const [username, setusername] = useState('');
-  const [password, setPassword] = useState('');
+export const Register = () => {
+  const [registerData, setRegisterData] = useState({});
   const [error, setError] = useState('');
-  const { setLogged } = useContext(LoggedContext);
+  // const { setLogged } = useContext(LoggedContext);
   const history = useHistory();
-  const [loginFetchStatus, loginFetch] = useFetch();
+  const [registerFetchStatus, registerFetch] = useFetch();
 
-  const changeUsername = (mail) => {
-    setusername(mail);
+  const changeUsername = (username) => {
+    setRegisterData({ ...registerData, username });
     setError('');
   };
 
-  const changePassword = (pass) => {
-    setPassword(pass);
+  const changePassword = (password) => {
+    setRegisterData({ ...registerData, password });
+    setError('');
+  };
+
+  const changeEmail = (email) => {
+    setRegisterData({ ...registerData, email });
     setError('');
   };
 
   const clickCancel = () => {
-    setusername('');
-    setPassword('');
+    setRegisterData({});
     setError('');
   };
 
   const clickSend = (e) => {
     e.preventDefault();
-    const url = `http://localhost:3000/login`;
+    const url = `http://localhost:3000/register`;
     const method = 'POST';
     const body = {
-      username,
-      password,
+      username: registerData.username,
+      password: registerData.password,
+      email: registerData.email,
     };
     // Estas opciones prefefinidas con las que se necesitan para guardar y mandar cookies
     const options = {
       withCredentials: true,
       credentials: 'include',
     };
-    loginFetch({ url, method, body, options });
+    registerFetch({ url, method, body, options });
   };
 
   useEffect(() => {
     const loggin = () => {
-      setLogged(true);
-      history.push('/search');
+      history.push('/');
     };
-    loginFetchStatus.isSuccess && loggin();
+    registerFetchStatus.isSuccess && loggin();
 
-    loginFetchStatus.isFailed && setError(loginFetchStatus.error.message);
-  }, [
-    history,
-    loginFetchStatus.isSuccess,
-    loginFetchStatus.isFailed,
-    setLogged,
-    loginFetchStatus.error,
-    loginFetchStatus,
-  ]);
+    registerFetchStatus.isFailed && setError(registerFetchStatus.error.message);
+  }, [history, registerFetchStatus]);
   return (
     <div className="Login__wrapper">
       <form className="Login__form" onSubmit={clickSend}>
         <div className="Login__Input-wrapper">
           <Input
-            name="usuario"
+            name="usuario github"
             inputType="text"
             change={changeUsername}
             id="email"
           >
-            {username}
+            {registerData.username}
           </Input>
           <Input
             name="contraseña"
@@ -83,7 +78,10 @@ export const Login = () => {
             id="password"
             inputType="password"
           >
-            {password}
+            {registerData.password}
+          </Input>
+          <Input name="email" change={changeEmail} id="email" inputType="email">
+            {registerData.email}
           </Input>
           <Error>{error}</Error>
         </div>
@@ -98,4 +96,4 @@ export const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
