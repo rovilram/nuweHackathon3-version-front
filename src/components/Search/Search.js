@@ -25,6 +25,7 @@ export const Search = () => {
 
   useEffect(() => {
     const showDetail = async () => {
+      console.log(userFetchState.data);
       await setUserData({
         avatar_url: userFetchState.data.avatar_url,
         login: userFetchState.data.login,
@@ -33,12 +34,12 @@ export const Search = () => {
       });
     };
     userFetchState.isSuccess && showDetail();
+    userFetchState.isFailed && console.log(userFetchState.error);
   }, [setUserData, userFetchState]);
 
   const submitForm = (e) => {
     e.preventDefault();
     const url = `https://api.github.com/users/${username}`;
-    console.log('USERNAME', username);
     const method = 'GET';
     userFetch({ url, method });
   };
