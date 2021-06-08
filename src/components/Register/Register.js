@@ -3,7 +3,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Error from '../Error/Error';
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import LoggedContext from '../../context/loggedContext';
 import { useHistory } from 'react-router-dom';
 import useFetch from '../../Hooks/useFetch';

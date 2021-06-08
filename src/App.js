@@ -1,6 +1,7 @@
 import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import Group from './components/Group/Group';
 import Search from './components/Search/Search';
 import Footer from './components/Footer/Footer';
 import UserRepos from './components/UserRepos/UserRepos';
@@ -28,6 +29,7 @@ function App() {
                 <Route exact path="/" component={Login} />
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/search" component={Search} />
+                <Route exact path="/group" component={Group} />
                 <Route
                   exact
                   path="/user-repos/:username"

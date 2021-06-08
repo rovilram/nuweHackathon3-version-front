@@ -3,15 +3,20 @@ import './Card.css';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-
 import Button from '../Button/Button';
 
-export const Card = ({ children }) => {
-  
+export const Card = ({ children, addUser }) => {
   const history = useHistory();
   const clickRepos = () => {
-    history.push(`/user-repos/${children.login}`)
-  }
+    history.push(`/user-repos/${children.login}`);
+  };
+
+  const handleAddUser = () => {
+    addUser({
+      username: children.login,
+      img: children.avatar_url,
+    });
+  };
 
   return (
     <div className="Card__wrapper">
@@ -30,6 +35,7 @@ export const Card = ({ children }) => {
         <p className="Card__numRepos-text">{children.public_repos}</p>
       </div>
       <Button click={clickRepos}>Ver repositorios </Button>
+      <Button click={handleAddUser}>Añadir usuario </Button>
     </div>
   );
 };

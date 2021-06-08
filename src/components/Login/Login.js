@@ -51,20 +51,13 @@ export const Login = () => {
 
   useEffect(() => {
     const loggin = () => {
-      setLogged(true);
-      history.push('/search');
+      setLogged({ username });
+      history.push('/group');
     };
     loginFetchStatus.isSuccess && loggin();
 
     loginFetchStatus.isFailed && setError(loginFetchStatus.error.message);
-  }, [
-    history,
-    loginFetchStatus.isSuccess,
-    loginFetchStatus.isFailed,
-    setLogged,
-    loginFetchStatus.error,
-    loginFetchStatus,
-  ]);
+  }, [history, setLogged, loginFetchStatus, username]);
   return (
     <div className="Login__wrapper">
       <form className="Login__form" onSubmit={clickSend}>

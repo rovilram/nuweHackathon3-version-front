@@ -31,9 +31,9 @@ export const UserRepos = () => {
     reposFetchState.isSuccess && setRepos(reposFetchState.data);
   }, [reposFetchState]);
 
-  const printRepo = () => repos.map((repo) => <Repo>{repo}</Repo>);
+  const printRepo = () => repos.map((repo) => <Repo key={repo.id}>{repo}</Repo>);
 
-  const clickReturn = () => history.push('/search');
+  const clickReturn = () => history.push('/group');
 
   return (
     <div className="UserRepos__wrapper">

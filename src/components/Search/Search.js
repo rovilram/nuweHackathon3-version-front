@@ -11,7 +11,7 @@ import useFetch from '../../Hooks/useFetch';
 import UserDataContext from '../../context/userDataContext';
 import LoggedContext from '../../context/loggedContext';
 
-export const Search = () => {
+export const Search = ({addUser}) => {
   const [username, setUsername] = useState('');
   const [userFetchState, userFetch] = useFetch();
 
@@ -72,7 +72,7 @@ export const Search = () => {
         </div>
       </form>
 
-      {userData.login && <Card>{userData}</Card>}
+      {userData.login && <Card addUser={addUser}>{userData}</Card>}
     </div>
   );
 };
